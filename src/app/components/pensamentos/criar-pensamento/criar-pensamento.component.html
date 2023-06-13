@@ -4,43 +4,29 @@
   </header>
   <form [formGroup]="formulario">
     <label for="pensamento">Pensamento</label>
-    <input
-      type="textarea"
-      class="input"
-      id="pensamento"
-      formControlName="conteudo"
-      placeholder="Digite o pensamento"
-    >
-    <div class="mensagem__erro"
-      *ngIf="formulario.get('conteudo')?.errors  && formulario.get('conteudo')?.touched">
+    <input type="textarea" class="input" id="pensamento" formControlName="conteudo" placeholder="Digite o pensamento">
+    <div class="mensagem__erro" *ngIf="formulario.get('conteudo')?.errors  && formulario.get('conteudo')?.touched">
       Pensamento é obrigatório!
     </div>
     <label for="autoria">Autoria</label>
-    <input
-      type="text"
-      class="input"
-      id="autoria"
-      formControlName="autoria"
-      placeholder="Digite a autoria ou fonte"
-    >
+    <input type="text" class="input" id="autoria" formControlName="autoria" placeholder="Digite a autoria ou fonte">
     <div class="mensagem__erro"
-    *ngIf="formulario.get('autoria')?.errors?.['required'] && formulario.get('autoria')?.touched" >
+      *ngIf="formulario.get('autoria')?.errors?.['required'] && formulario.get('autoria')?.touched">
       Autoria é obrigatória!
     </div>
     <div class="mensagem__erro"
-    *ngIf="formulario.get('autoria')?.errors?.['minlength'] && formulario.get('autoria')?.touched">
+      *ngIf="formulario.get('autoria')?.errors?.['minlength'] && formulario.get('autoria')?.touched">
       Autoria precisa ter no mínimo 3 caracteres!
+    </div>
+    <div class="mensagem__erro"
+      *ngIf="formulario.get('autoria')?.errors?.['minusculo'] && formulario.get('autoria')?.touched">
+      Esse campo aceita apenas letras minúsculas
     </div>
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <div class="radio-modelo">
         <label for="modelo1">
-          <input
-            type="radio"
-            id="modelo1"
-            value="modelo1"
-            formControlName="modelo"
-          >
+          <input type="radio" id="modelo1" value="modelo1" formControlName="modelo">
           <div class="custom-radio">
             <span></span>
           </div>
@@ -55,12 +41,7 @@
       </div>
       <div class="radio-modelo">
         <label for="modelo2">
-          <input
-            type="radio"
-            id="modelo2"
-            value="modelo2"
-            formControlName="modelo"
-          >
+          <input type="radio" id="modelo2" value="modelo2" formControlName="modelo">
           <div class="custom-radio">
             <span></span>
           </div>
@@ -75,12 +56,7 @@
       </div>
       <div class="radio-modelo">
         <label for="modelo3">
-          <input
-            type="radio"
-            id="modelo3"
-            value="modelo3"
-            formControlName="modelo"
-          >
+          <input type="radio" id="modelo3" value="modelo3" formControlName="modelo">
           <div class="custom-radio">
             <span></span>
           </div>
@@ -95,11 +71,7 @@
       </div>
     </div>
     <div class="acoes">
-      <button
-        (click)="criarPensamento()"
-        [disabled]="!formulario.valid"
-        [ngClass]="habilitarBotao()"
-      >Salvar</button>
+      <button (click)="criarPensamento()" [disabled]="!formulario.valid" [ngClass]="habilitarBotao()">Salvar</button>
       <button routerLink="/listarPensamento" (click)="cancelar()" class="botao">Cancelar</button>
     </div>
   </form>
